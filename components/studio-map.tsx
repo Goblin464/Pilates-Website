@@ -29,7 +29,7 @@ export function StudioMap({ className }: { className?: string }) {
       const lat = parseFloat(data[0].lat)
       const lon = parseFloat(data[0].lon)
 
-      map = L.map(container, {
+      map = L.map(container as HTMLElement, {
         center: [lat, lon],
         zoom: ZOOM,
         zoomControl: false,

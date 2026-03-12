@@ -1,5 +1,4 @@
 import { HeroSection } from "@/components/hero-section"
-import { TrialOffer } from "@/components/trial-offer"
 import { ForEveryone } from "@/components/for-everyone"
 import { Benefits } from "@/components/benefits"
 import { Courses } from "@/components/courses"

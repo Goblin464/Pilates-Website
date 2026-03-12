@@ -1,5 +1,3 @@
-"use server"
-
 type ContactForm = {
   name: string
   email: string
@@ -19,7 +17,7 @@ export async function sendEmail(data: ContactForm) {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        access_key: process.env.WEB3FORMS_KEY,
+        access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY,
         subject: `Neue Kontaktanfrage von ${name}`,
         from_name: "Pure Pilates Website",
         name,
