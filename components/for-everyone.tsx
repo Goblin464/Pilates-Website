@@ -7,20 +7,20 @@ const audiences = [
   {
     image: "/oldMan.JPG",
     title: "Jedes Alter",
-    subtitle: "20 bis 80+",
+    
     description: "Pilates passt sich Ihnen an, nicht umgekehrt.",
   },
   {
     image: "/youngWoman.JPG",
     title: "Jedes Fitnesslevel",
-    subtitle: "Anfanger bis Profi",
+    
     description: "Wir holen Sie dort ab, wo Sie stehen.",
   },
   {
     image: "/hands.JPG",
-    title: "Jede Lebenssituation",
-    subtitle: "Schwangerschaft & Reha",
-    description: "Wir unterstutzen Sie in jeder Phase.",
+    title: "Zur Prävention & Rehabilitation",
+   
+    description: "Ebenso wirkungsvoll als ergänzendes Training.",
   },
 ]
 
@@ -28,7 +28,7 @@ export function ForEveryone() {
   const { ref, isVisible } = useFadeIn()
 
   return (
-    <section ref={ref} className="py-24 md:py-32 bg-background relative">
+    <section ref={ref} className="py-24 md:py-32 bg-secondary relative">
       {/* Decorative top wave */}
       <div className="absolute -top-1 left-0 right-0 h-24 bg-background" style={{
         clipPath: "ellipse(70% 100% at 50% 0%)"
@@ -38,12 +38,10 @@ export function ForEveryone() {
         <div className={`text-center mb-20 transition-all duration-700 ${
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
         }`}>
-          <p className="text-primary text-sm uppercase tracking-[0.3em] mb-4">
-            Fur jeden geeignet
-          </p>
-          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-foreground mb-6 text-balance">
-            Pilates ist fur <span className="italic">alle</span> da
-          </h2>
+         
+          <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-foreground mb-6 text-balance">
+          Fur jeden  <span className="italic"> geeignet</span>
+          </h1>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
@@ -66,9 +64,8 @@ export function ForEveryone() {
                 
                 {/* Content overlay */}
                 <div className="absolute bottom-0 left-0 right-0 p-6 text-card">
-                  <p className="text-primary text-sm uppercase tracking-wider mb-1">{item.subtitle}</p>
                   <h3 className="font-serif text-2xl md:text-3xl mb-2">{item.title}</h3>
-                  <p className="text-card/80 text-sm">{item.description}</p>
+                  <p className="text-card/80 text-base md:text-lg">{item.description}</p>
                 </div>
               </div>
             </div>

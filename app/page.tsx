@@ -3,6 +3,7 @@ import { TrialOffer } from "@/components/trial-offer"
 import { ForEveryone } from "@/components/for-everyone"
 import { Benefits } from "@/components/benefits"
 import { Courses } from "@/components/courses"
+import { Gallery } from "@/components/gallery"
 import { AboutMe } from "@/components/about-me"
 import { PureMethod } from "@/components/pure-method"
 import { ContactSection } from "@/components/contact-section"
@@ -14,10 +15,10 @@ export default function Home() {
     <main className="min-h-screen bg-background">
       <Navigation />
       <HeroSection />
-      <TrialOffer />
       <ForEveryone />
       <Benefits />
       <Courses />
+      <Gallery />
       <PureMethod />
       <AboutMe />
       <ContactSection />

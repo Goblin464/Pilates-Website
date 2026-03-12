@@ -8,6 +8,13 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { useFadeIn } from "@/hooks/use-fade-in"
+import { sendEmail } from "@/app/actions/send-email"
+import dynamic from "next/dynamic"
+
+const StudioMap = dynamic(
+  () => import("@/components/studio-map").then((mod) => mod.StudioMap),
+  { ssr: false }
+)
 
 export function ContactSection() {
   const { ref, isVisible } = useFadeIn()
@@ -19,14 +26,22 @@ export function ContactSection() {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
+  const [error, setError] = useState("")
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
-    await new Promise((resolve) => setTimeout(resolve, 1000))
+    setError("")
+
+    const result = await sendEmail(formData)
+
     setIsSubmitting(false)
-    setSubmitted(true)
-    setFormData({ name: "", email: "", phone: "", message: "" })
+    if (result.success) {
+      setSubmitted(true)
+      setFormData({ name: "", email: "", phone: "", message: "" })
+    } else {
+      setError(result.error || "Ein Fehler ist aufgetreten.")
+    }
   }
 
   return (
@@ -38,9 +53,6 @@ export function ContactSection() {
         <div className={`text-center mb-20 transition-all duration-700 ${
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
         }`}>
-          <p className="text-primary text-sm uppercase tracking-[0.3em] mb-4">
-            Kontakt
-          </p>
           <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-foreground mb-6 text-balance">
             Schreiben Sie <span className="italic">mir</span>
           </h2>
@@ -52,45 +64,44 @@ export function ContactSection() {
             isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"
           }`}>
             <div className="space-y-6">
-              <a href="tel:+491234567890" className="flex items-center gap-5 p-5 bg-card rounded-[1.5rem] border border-border hover:border-primary/30 transition-all group">
-                <div className="flex-shrink-0 w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                  <Phone className="w-6 h-6 text-primary" />
+              <a href="tel:+491234567890" className="contact-card relative flex items-center gap-5 p-5 bg-card rounded-[1.5rem] border border-border overflow-hidden group hover:bg-foreground hover:border-foreground transition-all duration-500">
+                <div className="contact-icon relative flex-shrink-0 w-14 h-14 bg-foreground/5 rounded-2xl flex items-center justify-center group-hover:bg-card/20 [transform-style:preserve-3d] transition-colors duration-500">
+                  <Phone className="w-6 h-6 text-foreground group-hover:text-card transition-colors duration-500" />
                 </div>
-                <div>
-                  <p className="text-muted-foreground text-sm">Telefon</p>
-                  <p className="text-foreground font-medium">+49 123 456 7890</p>
-                </div>
-              </a>
-
-              <a href="mailto:info@pure-pilates.de" className="flex items-center gap-5 p-5 bg-card rounded-[1.5rem] border border-border hover:border-primary/30 transition-all group">
-                <div className="flex-shrink-0 w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                  <Mail className="w-6 h-6 text-primary" />
-                </div>
-                <div>
-                  <p className="text-muted-foreground text-sm">E-Mail</p>
-                  <p className="text-foreground font-medium">info@pure-pilates.de</p>
+                <div className="relative">
+                  <p className="text-muted-foreground text-sm group-hover:text-card/60 transition-colors duration-500">Telefon</p>
+                  <p className="text-foreground font-medium group-hover:text-card transition-colors duration-500">+49 123 456 7890</p>
                 </div>
               </a>
 
-              <div className="flex items-center gap-5 p-5 bg-card rounded-[1.5rem] border border-border">
-                <div className="flex-shrink-0 w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center">
-                  <MapPin className="w-6 h-6 text-primary" />
+              <a href="mailto:info@pure-pilates.de" className="contact-card relative flex items-center gap-5 p-5 bg-card rounded-[1.5rem] border border-border overflow-hidden group hover:bg-foreground hover:border-foreground transition-all duration-500">
+                <div className="contact-icon relative flex-shrink-0 w-14 h-14 bg-foreground/5 rounded-2xl flex items-center justify-center group-hover:bg-card/20 [transform-style:preserve-3d] transition-colors duration-500">
+                  <Mail className="w-6 h-6 text-foreground group-hover:text-card transition-colors duration-500" />
                 </div>
-                <div>
-                  <p className="text-muted-foreground text-sm">Studio</p>
-                  <p className="text-foreground font-medium">Musterstrasse 123, 80331 Munchen</p>
+                <div className="relative">
+                  <p className="text-muted-foreground text-sm group-hover:text-card/60 transition-colors duration-500">E-Mail</p>
+                  <p className="text-foreground font-medium group-hover:text-card transition-colors duration-500">wagner.zimmermann@gmx.de</p>
+                </div>
+              </a>
+
+              <div className="contact-card relative bg-card rounded-[1.5rem] border border-border overflow-hidden group hover:bg-foreground hover:border-foreground transition-all duration-500">
+                <div className="flex items-center gap-5 p-5">
+                  <div className="contact-icon relative flex-shrink-0 w-14 h-14 bg-foreground/5 rounded-2xl flex items-center justify-center group-hover:bg-card/20 [transform-style:preserve-3d] transition-colors duration-500">
+                    <MapPin className="w-6 h-6 text-foreground group-hover:text-card transition-colors duration-500" />
+                  </div>
+                  <div>
+                    <p className="text-muted-foreground text-sm group-hover:text-card/60 transition-colors duration-500">Trainingsort</p>
+                    <p className="text-foreground font-medium group-hover:text-card transition-colors duration-500">Am Tannenhof 38, Konstanz</p>
+                  </div>
+                </div>
+                <div className={`transition-all duration-1000 ease-out overflow-hidden ${
+                  isVisible ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+                }`} style={{ transitionDelay: isVisible ? "400ms" : "0ms" }}>
+                  <StudioMap className="w-full h-72 border-t border-border" />
                 </div>
               </div>
             </div>
 
-            {/* Trial offer card */}
-            <div className="mt-8 p-6 bg-foreground rounded-[1.5rem] text-card border border-foreground">
-              <p className="text-card/70 text-sm uppercase tracking-wider mb-2">Sonderangebot</p>
-              <h3 className="font-serif text-2xl mb-3 text-card">Schnupperstunde fur nur 15 EUR</h3>
-              <p className="text-card/70 text-sm">
-                Erwahnen Sie einfach &ldquo;Schnupperstunde&rdquo; in Ihrer Nachricht!
-              </p>
-            </div>
           </div>
 
           {/* Contact Form */}
@@ -169,10 +180,16 @@ export function ContactSection() {
                   />
                 </div>
 
+                {error && (
+                  <p className="text-destructive text-sm text-center bg-destructive/10 rounded-xl p-3">
+                    {error}
+                  </p>
+                )}
+
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-primary text-primary-foreground hover:bg-accent rounded-full py-6 text-base font-medium group"
+                  className="w-full bg-foreground text-card hover:bg-card hover:text-foreground border border-foreground rounded-full py-6 text-base font-medium group transition-all duration-300"
                 >
                   {isSubmitting ? (
                     "Wird gesendet..."

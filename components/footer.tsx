@@ -12,7 +12,7 @@ export function Footer() {
         <div className="flex flex-col items-center text-center">
           {/* Logo */}
           <div className="w-16 h-16 rounded-full bg-card/10 flex items-center justify-center mb-6">
-            <span className="font-serif text-2xl font-bold text-primary">P</span>
+            <span className="font-serif text-2xl font-bold text-card">P</span>
           </div>
           
           <p className="font-serif text-3xl tracking-wide mb-2">PURE PILATES</p>
@@ -23,7 +23,7 @@ export function Footer() {
           {/* Social */}
           <a
             href="#"
-            className="w-12 h-12 rounded-full bg-card/10 flex items-center justify-center text-card/60 hover:text-primary hover:bg-card/20 transition-all mb-12"
+            className="w-12 h-12 rounded-full bg-card/10 flex items-center justify-center text-card/60 hover:text-card hover:bg-card/20 transition-all mb-12"
             aria-label="Instagram"
           >
             <Instagram className="w-5 h-5" />
@@ -31,9 +31,9 @@ export function Footer() {
           
           {/* Links */}
           <div className="flex flex-wrap justify-center gap-6 text-sm text-card/50 mb-8">
-            <a href="#" className="hover:text-primary transition-colors">Impressum</a>
-            <a href="#" className="hover:text-primary transition-colors">Datenschutz</a>
-            <a href="#" className="hover:text-primary transition-colors">AGB</a>
+            <a href="#" className="hover:text-card transition-colors">Impressum</a>
+            <a href="#" className="hover:text-card transition-colors">Datenschutz</a>
+            <a href="#" className="hover:text-card transition-colors">AGB</a>
           </div>
           
           <p className="text-card/30 text-xs">

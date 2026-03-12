@@ -32,7 +32,7 @@ const benefits = [
   {
     icon: Dumbbell,
     title: "Kraft aufbauen",
-    description: "Ganzheitliches Training fur eine starke Korpermitte und mehr Stabilitat.",
+    description: "Ganzheitliches Training fur eine starke Korpermitte und mehr Core-Stabilitat.",
   },
 ]
 
@@ -50,9 +50,6 @@ export function Benefits() {
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
         }`}>
           <div>
-            <p className="text-primary text-sm uppercase tracking-[0.3em] mb-4">
-              Vorteile
-            </p>
             <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-foreground text-balance">
               Warum Pilates?
             </h2>
@@ -72,16 +69,16 @@ export function Benefits() {
               }`}
               style={{ transitionDelay: isVisible ? `${index * 80}ms` : "0ms" }}
             >
-              <div className="group relative bg-primary/5 p-8 rounded-[2rem] border border-primary/20 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 hover:bg-primary/10 hover:scale-[1.02] transition-all duration-250">
+              <div className="group relative bg-card p-8 rounded-[2rem] border border-border hover:bg-foreground hover:border-foreground hover:scale-[1.02] transition-all duration-300">
                 <div className="flex items-start gap-5">
-                <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-foreground/5 flex items-center justify-center group-hover:bg-primary/10 transition-all duration-300">
-                  <benefit.icon className="w-6 h-6 text-primary" />
+                <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-foreground/5 flex items-center justify-center group-hover:bg-card/20 transition-all duration-300">
+                  <benefit.icon className="w-6 h-6 text-foreground group-hover:text-card transition-colors duration-300" />
                 </div>
                 <div>
-                  <h3 className="font-serif text-xl text-foreground mb-2 group-hover:text-primary transition-colors">
+                  <h3 className="font-serif text-xl text-foreground mb-2 group-hover:text-card transition-colors duration-300">
                     {benefit.title}
                   </h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">
+                  <p className="text-muted-foreground text-sm leading-relaxed group-hover:text-card/70 transition-colors duration-300">
                     {benefit.description}
                   </p>
                 </div>

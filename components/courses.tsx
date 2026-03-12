@@ -6,21 +6,21 @@ import { useFadeIn } from "@/hooks/use-fade-in"
 
 const courses = [
   {
-    image: "/yogamatte.jpg",
+    image: "/_DSC1443-3.jpg",
     title: "Matten Pilates",
     subtitle: "Gruppenkurse",
     icon: Users,
     description:
-      "Klassisches Pilates auf der Matte in kleinen Gruppen. Ideal fur Einsteiger und alle, die die Grundlagen vertiefen mochten.",
-    features: ["Max. 8 Teilnehmer", "Alle Level willkommen", "Inkl. Ausrustung"],
+      "Klassischer Pilates Unterricht auf der Matte in kleinen Gruppen.",
+    features: ["Beginner & Intermediate"]
   },
   {
-    image: "/refomrer.jpg.webp",
+    image: "/IMG_7172.jpg",
     title: "Reformer Pilates",
     subtitle: "Einzeltraining",
     icon: User,
     description:
-      "Intensives Training am Reformer-Gerat fur prazise, gelenkschonende Bewegungen und schnelle Fortschritte.",
+      "35 Minuten Reformer-Training, gefolgt von 15 Minuten individuellem Training auf der Matte oder mit Kleingeräten.",
     features: ["1:1 Betreuung", "Individuelle Anpassung", "Moderne Gerate"],
   },
 ]
@@ -34,76 +34,138 @@ export function Courses() {
         <div className={`text-center mb-20 transition-all duration-700 ${
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
         }`}>
-          <p className="text-primary text-sm uppercase tracking-[0.3em] mb-4">
-            Kursangebot
-          </p>
           <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-foreground mb-6 text-balance">
             Meine Angebote
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {courses.map((course, index) => (
-            <div
-              key={index}
-              className={`group bg-card rounded-[2.5rem] border border-border hover:border-primary/30 transition-all duration-500 overflow-hidden hover:shadow-2xl hover:shadow-primary/10 ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
-              style={{ transitionDelay: isVisible ? `${index * 150}ms` : "0ms" }}
-            >
-              <div className="relative aspect-[16/9] overflow-hidden">
-                <Image
-                  src={course.image || "/placeholder.svg"}
-                  alt={course.title}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-foreground/30 to-transparent" />
-                
-                {/* Badge */}
-                <div className="absolute top-6 left-6 bg-card/95 backdrop-blur-sm px-5 py-2.5 rounded-full flex items-center gap-2 shadow-lg">
-                  <course.icon className="w-4 h-4 text-primary" />
-                  <span className="text-sm font-medium text-foreground">
-                    {course.subtitle}
-                  </span>
-                </div>
-                
-               
-              </div>
-              
-              <div className="p-8 md:p-10">
-                <h3 className="font-serif text-3xl md:text-4xl text-foreground mb-4">
-                  {course.title}
-                </h3>
-                <p className="text-muted-foreground mb-8 leading-relaxed">
-                  {course.description}
-                </p>
-                
-                <div className="flex flex-wrap gap-3 mb-8">
-                  {course.features.map((feature, i) => (
-                    <span 
-                      key={i} 
-                      className="px-4 py-2 rounded-full bg-muted text-sm text-muted-foreground"
+        <div className="space-y-6 lg:space-y-12">
+          {/* Reformer Pilates - Größer */}
+          <div
+            className={`group bg-card rounded-[2.5rem] border border-border hover:bg-foreground hover:border-foreground transition-all duration-500 overflow-hidden w-full ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
+            style={{ transitionDelay: isVisible ? "0ms" : "0ms" }}
+          >
+            {(() => {
+              const course = courses[1]
+              return (
+                <>
+                  <div className="relative aspect-[21/9] overflow-hidden">
+                    <Image
+                      src={course.image || "/placeholder.svg"}
+                      alt={course.title}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-700 grayscale"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-foreground/30 to-transparent" />
+                    
+                    <div className="absolute top-6 left-6 bg-card/95 backdrop-blur-sm px-6 py-3 rounded-full flex items-center gap-3 shadow-lg group-hover:bg-foreground/90 transition-colors duration-500">
+                      <course.icon className="w-5 h-5 text-primary group-hover:text-card transition-colors duration-500" />
+                      <span className="text-base font-medium text-foreground group-hover:text-card transition-colors duration-500">
+                        {course.subtitle}
+                      </span>
+                    </div>
+                  </div>
+                  
+                  <div className="p-8 md:p-10">
+                    <h3 className="font-serif text-3xl md:text-4xl text-foreground mb-4 group-hover:text-card transition-colors duration-500">
+                      {course.title}
+                    </h3>
+                    <p className="text-muted-foreground mb-8 leading-relaxed group-hover:text-card/70 transition-colors duration-500">
+                      {course.description}
+                    </p>
+                    <div className="mb-8">
+                     
+                      
+                      <div className="flex flex-wrap gap-3">
+                      
+                        
+                        <span className="px-4 py-2 rounded-full bg-muted text-sm text-muted-foreground group-hover:bg-card/10 group-hover:text-card/70 transition-colors duration-500">
+                         50 Minuten
+                        </span>
+                        
+                        <span className="px-4 py-2 rounded-full bg-muted text-sm text-muted-foreground group-hover:bg-card/10 group-hover:text-card/70 transition-colors duration-500">
+                         Personalisisert
+                        </span>
+                        
+                       
+                        
+                      </div>
+                    </div>
+                    
+                   
+                  </div>
+                </>
+              )
+            })()}
+          </div>
+
+          {/* Matten Pilates - Gleiche Breite, aber niedriger */}
+          <div
+            className={`transition-all duration-500 ${
+              isVisible ? "opacity-95 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
+            style={{ transitionDelay: isVisible ? "300ms" : "0ms" }}
+          >
+          <div className="group bg-card rounded-[2.5rem] border border-border hover:bg-foreground hover:border-foreground transition-all duration-500 overflow-hidden w-full">
+            {(() => {
+              const course = courses[0]
+              return (
+                <div className="flex flex-col lg:flex-row">
+                  <div className="relative lg:w-2/5 aspect-[16/9] lg:aspect-auto lg:h-auto overflow-hidden">
+                    <Image
+                      src={course.image || "/placeholder.svg"}
+                      alt={course.title}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-foreground/30 to-transparent lg:bg-gradient-to-r lg:from-foreground/30 lg:to-transparent" />
+                    
+                    <div className="absolute top-6 left-6 bg-card/95 backdrop-blur-sm px-6 py-3 rounded-full flex items-center gap-3 shadow-lg group-hover:bg-foreground/90 transition-colors duration-500">
+                      <course.icon className="w-5 h-5 text-primary group-hover:text-card transition-colors duration-500" />
+                      <span className="text-base font-medium text-foreground group-hover:text-card transition-colors duration-500">
+                        {course.subtitle}
+                      </span>
+                    </div>
+                  </div>
+                  
+                  <div className="p-6 md:p-8 lg:w-3/5 flex flex-col justify-center">
+                    <h3 className="font-serif text-2xl md:text-1xl text-foreground mb-3 group-hover:text-card transition-colors duration-500">
+                      {course.title}
+                    </h3>
+                    <p className="text-muted-foreground mb-6 leading-relaxed group-hover:text-card/70 transition-colors duration-500">
+                      {course.description}
+                    </p>
+                    
+                    <div className="mb-6">
+                      
+                      
+                      <div className="flex flex-wrap gap-3">
+                        {course.features.map((feature, i) => (
+                          <span 
+                            key={i} 
+                            className="px-4 py-2 rounded-full bg-muted text-sm text-muted-foreground group-hover:bg-card/10 group-hover:text-card/70 transition-colors duration-500"
+                          >
+                            {feature}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                    
+                    <a
+                      href="#contact"
+                      className="inline-flex items-center gap-3 text-foreground font-medium group/link group-hover:text-card transition-colors duration-500"
                     >
-                      {feature}
-                    </span>
-                  ))}
+                     
+                     
+                    </a>
+                  </div>
                 </div>
-                
-                <a
-                  href="#contact"
-                  className="inline-flex items-center gap-3 text-primary font-medium group/link"
-                >
-                  <span className="border-b border-primary/30 group-hover/link:border-primary transition-colors">
-                    Mehr erfahren
-                  </span>
-                  <span className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center group-hover/link:bg-primary group-hover/link:text-primary-foreground transition-all">
-                    <ArrowRight className="w-4 h-4" />
-                  </span>
-                </a>
-              </div>
-            </div>
-          ))}
+              )
+            })()}
+          </div>
+          </div>
         </div>
       </div>
     </section>
