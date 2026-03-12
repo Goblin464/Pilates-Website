@@ -3,6 +3,7 @@
 import Image from "next/image"
 import { Users, User, ArrowRight } from "lucide-react"
 import { useFadeIn } from "@/hooks/use-fade-in"
+import { img } from "@/lib/utils"
 
 const courses = [
   {
@@ -53,7 +54,7 @@ export function Courses() {
                 <>
                   <div className="relative aspect-[21/9] overflow-hidden">
                     <Image
-                      src={course.image || "/placeholder.svg"}
+                      src={img(course.image)}
                       alt={course.title}
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-700 grayscale"
@@ -115,7 +116,7 @@ export function Courses() {
                 <div className="flex flex-col lg:flex-row">
                   <div className="relative lg:w-2/5 aspect-[16/9] lg:aspect-auto lg:h-auto overflow-hidden">
                     <Image
-                      src={course.image || "/placeholder.svg"}
+                      src={img(course.image)}
                       alt={course.title}
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-700"

@@ -2,6 +2,7 @@
 
 import Image from "next/image"
 import { useFadeIn } from "@/hooks/use-fade-in"
+import { img } from "@/lib/utils"
 import { Award, Heart, Sparkles, GraduationCap } from "lucide-react"
 
 const stats = [
@@ -24,7 +25,7 @@ export function AboutMe() {
             <div className="relative aspect-[4/5] rounded-[3rem] overflow-hidden">
               <Image
 
-src="/karin.jpeg"
+src={img("/karin.jpeg")}
                 alt="Karin Wagner-Zimmermann"
                 fill
                 className="object-cover"

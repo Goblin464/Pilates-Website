@@ -2,6 +2,7 @@
 
 import Image from "next/image"
 import { useFadeIn } from "@/hooks/use-fade-in"
+import { img } from "@/lib/utils"
 
 const audiences = [
   {
@@ -55,7 +56,7 @@ export function ForEveryone() {
             >
               <div className="relative aspect-[3/4] mb-6 overflow-hidden rounded-[2.5rem]">
                 <Image
-                  src={item.image || "/placeholder.svg"}
+                  src={img(item.image)}
                   alt={item.title}
                   fill
                   className="object-cover transition-all duration-700 group-hover:scale-105"

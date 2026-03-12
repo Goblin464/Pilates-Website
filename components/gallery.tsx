@@ -3,6 +3,7 @@
 import { useRef, useEffect, useCallback } from "react"
 import Image from "next/image"
 import { useFadeIn } from "@/hooks/use-fade-in"
+import { img } from "@/lib/utils"
 
 // ── Layout constants ──────────────────────────────────────────────────
 const TRACK_HEIGHT = 520
@@ -250,7 +251,7 @@ function GalleryImage({ src, alt, height }: { src: string; alt: string; height: 
       style={{ height }}
     >
       <Image
-        src={src}
+        src={img(src)}
         alt={alt}
         fill
         className="object-cover transition-transform duration-700 group-hover:scale-110"

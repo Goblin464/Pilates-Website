@@ -2,6 +2,7 @@
 
 import Image from "next/image"
 import { useEffect, useState, useRef } from "react"
+import { img } from "@/lib/utils"
 
 const QUOTE_CHARS = `"It is the mind itself which builds the `
 const HIGHLIGHT = "Body"
@@ -63,7 +64,7 @@ export function HeroSection() {
     <section className="relative min-h-screen flex items-center overflow-hidden">
       <div className={`absolute inset-0 z-0 transition-all duration-1500 ${isLoaded ? "opacity-100 scale-100" : "opacity-0 scale-105"}`}>
         <Image
-          src="/youngWoman.JPG"
+          src={img("/youngWoman.JPG")}
           alt="Pilates Studio"
           fill
           className="object-cover"
