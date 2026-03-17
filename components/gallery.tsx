@@ -7,6 +7,7 @@ import { img } from "@/lib/utils"
 
 // ── Layout constants ──────────────────────────────────────────────────
 const TRACK_HEIGHT = 520
+const MOBILE_SCALE = 0.55
 const INNER_GAP = 16
 const BLOCK_GAP = 24
 const AUTO_SPEED = 1.5
@@ -221,10 +222,12 @@ export function Gallery() {
   const rafRef = useRef<number>(0)
   const isDraggingRef = useRef(false)
   const dragStartXRef = useRef(0)
+  const dragStartYRef = useRef(0)
   const dragOffsetRef = useRef(0)
   const velocityRef = useRef(0)
   const lastMoveXRef = useRef(0)
   const lastMoveTimeRef = useRef(0)
+  const directionRef = useRef<"none" | "horizontal" | "vertical">("none")
 
   const wrapOffset = useCallback(
     (val: number) => ((val % setWidth) + setWidth) % setWidth,
@@ -276,18 +279,33 @@ export function Gallery() {
     if (!container) return
 
     const handleTouchStart = (e: TouchEvent) => {
-      isDraggingRef.current = true
       velocityRef.current = 0
       dragStartXRef.current = e.touches[0].clientX
+      dragStartYRef.current = e.touches[0].clientY
       lastMoveXRef.current = e.touches[0].clientX
       lastMoveTimeRef.current = Date.now()
       dragOffsetRef.current = offsetRef.current
+      directionRef.current = "none"
+      isDraggingRef.current = false
     }
 
     const handleTouchMove = (e: TouchEvent) => {
-      if (!isDraggingRef.current) return
-      e.preventDefault()
       const x = e.touches[0].clientX
+      const y = e.touches[0].clientY
+
+      if (directionRef.current === "none") {
+        const dx = Math.abs(x - dragStartXRef.current)
+        const dy = Math.abs(y - dragStartYRef.current)
+        if (dx < 8 && dy < 8) return
+        directionRef.current = dx > dy ? "horizontal" : "vertical"
+        if (directionRef.current === "horizontal") {
+          isDraggingRef.current = true
+        }
+      }
+
+      if (directionRef.current === "vertical") return
+
+      e.preventDefault()
       const now = Date.now()
       const dt = now - lastMoveTimeRef.current
       if (dt > 0) {
@@ -302,6 +320,7 @@ export function Gallery() {
 
     const handleTouchEnd = () => {
       isDraggingRef.current = false
+      directionRef.current = "none"
     }
 
     container.addEventListener("touchstart", handleTouchStart, { passive: true })
@@ -348,29 +367,37 @@ export function Gallery() {
     <section
       id="gallery"
       ref={sectionRef}
-      className="py-24 md:py-32 bg-muted/30 relative overflow-hidden"
+      className="py-16 md:py-32 bg-muted/30 relative overflow-hidden"
     >
       <div
         className={`overflow-hidden transition-all duration-700 select-none ${
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
         }`}
-        style={{ transitionDelay: isVisible ? "200ms" : "0ms", cursor: "grab", touchAction: "pan-y" }}
+        style={{ transitionDelay: isVisible ? "200ms" : "0ms", cursor: "grab" }}
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
         onPointerUp={handlePointerUp}
         onPointerLeave={handlePointerUp}
       >
         <div
-          ref={trackRef}
-          className="flex items-start will-change-transform"
-          style={{ gap: BLOCK_GAP, width: setWidth * 2 }}
+          className="origin-top-left scale-[0.55] md:scale-100 h-[var(--gallery-h-mobile)] md:h-[var(--gallery-h)]"
+          style={{
+            "--gallery-h-mobile": `${Math.round(TOTAL_HEIGHT * MOBILE_SCALE)}px`,
+            "--gallery-h": `${TOTAL_HEIGHT}px`,
+          } as React.CSSProperties}
         >
-          {blocks.map((block, i) => (
-            <BlockColumn key={`a-${i}`} block={block} keyPrefix={`a-${i}`} />
-          ))}
-          {blocks.map((block, i) => (
-            <BlockColumn key={`b-${i}`} block={block} keyPrefix={`b-${i}`} />
-          ))}
+          <div
+            ref={trackRef}
+            className="flex items-start will-change-transform"
+            style={{ gap: BLOCK_GAP, width: setWidth * 2 }}
+          >
+            {blocks.map((block, i) => (
+              <BlockColumn key={`a-${i}`} block={block} keyPrefix={`a-${i}`} />
+            ))}
+            {blocks.map((block, i) => (
+              <BlockColumn key={`b-${i}`} block={block} keyPrefix={`b-${i}`} />
+            ))}
+          </div>
         </div>
       </div>
     </section>
