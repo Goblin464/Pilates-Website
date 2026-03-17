@@ -43,7 +43,8 @@ export function Courses() {
         <div className="space-y-6 lg:space-y-12">
           {/* Reformer Pilates - Größer */}
           <div
-            className={`group bg-card rounded-[2.5rem] border border-border hover:bg-foreground hover:border-foreground transition-all duration-500 overflow-hidden w-full ${
+            id="reformer"
+            className={`group bg-card rounded-[2.5rem] border border-border hover:bg-foreground hover:border-foreground transition-all duration-500 overflow-hidden w-full scroll-mt-24 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
             style={{ transitionDelay: isVisible ? "0ms" : "0ms" }}
@@ -109,7 +110,7 @@ export function Courses() {
             }`}
             style={{ transitionDelay: isVisible ? "300ms" : "0ms" }}
           >
-          <div className="group bg-card rounded-[2.5rem] border border-border hover:bg-foreground hover:border-foreground transition-all duration-500 overflow-hidden w-full">
+          <div id="matten" className="group bg-card rounded-[2.5rem] border border-border hover:bg-foreground hover:border-foreground transition-all duration-500 overflow-hidden w-full scroll-mt-24">
             {(() => {
               const course = courses[0]
               return (

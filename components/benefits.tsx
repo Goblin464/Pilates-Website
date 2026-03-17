@@ -54,10 +54,12 @@ export function Benefits() {
               Warum Pilates?
             </h2>
           </div>
-          <p className="text-muted-foreground max-w-md md:text-right">
-            Mehr als nur ein Workout – eine ganzheitliche Methode 
-            fur korperliches und mentales Wohlbefinden.
-          </p>
+          <blockquote className="max-w-md md:text-right">
+            <p className="font-serif text-xl md:text-2xl text-foreground/80 italic leading-relaxed">
+              &ldquo;It is the mind itself which builds the <span className="text-primary">Body</span>&rdquo;
+            </p>
+            <cite className="text-muted-foreground text-sm mt-2 block not-italic">— Joseph Pilates</cite>
+          </blockquote>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
