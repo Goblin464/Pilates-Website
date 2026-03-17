@@ -11,6 +11,8 @@ export function HeroSection() {
   const [showSeparator, setShowSeparator] = useState(false)
   const [showMatten, setShowMatten] = useState(false)
   const [showHighlight, setShowHighlight] = useState(false)
+  const [hoverReformer, setHoverReformer] = useState(false)
+  const [hoverMatten, setHoverMatten] = useState(false)
 
   const [showPilates, setShowPilates] = useState(false)
 
@@ -28,10 +30,11 @@ export function HeroSection() {
     <section className="relative min-h-screen flex items-center overflow-hidden">
       <div className={`absolute inset-0 z-0 transition-all duration-1500 ${isLoaded ? "opacity-100 scale-100" : "opacity-0 scale-105"}`}>
         <Image
-          src={img("/startPicture.JPG")}
+          src={img("/startPicture.jpg")}
           alt="Pilates Studio"
           fill
           className="object-cover"
+          sizes="100vw"
           priority
         />
         <div className="absolute inset-0 bg-gradient-to-b from-foreground/50 via-foreground/30 to-foreground/60" />
@@ -52,7 +55,7 @@ export function HeroSection() {
                 action="highlight"
                 color="#8fac8f"
                 animationDuration={800}
-                iterations={1}
+                iterations={2}
                 multiline={false}
               
               >
@@ -66,26 +69,54 @@ export function HeroSection() {
           <div className="font-serif text-3xl md:text-4xl lg:text-6xl text-card leading-[1.1] flex flex-wrap items-baseline gap-x-4 md:gap-x-6">
             <a
               href="#reformer"
-              className="transition-all duration-1000 ease-out hover:text-primary"
+              className="transition-all duration-1000 ease-out"
               style={{
                 opacity: showReformer ? 1 : 0,
                 transform: showReformer ? "translateY(0)" : "translateY(-20px)",
                 filter: showReformer ? "blur(0px)" : "blur(12px)",
               }}
+              onMouseEnter={() => setHoverReformer(true)}
+              onMouseLeave={() => setHoverReformer(false)}
             >
-              Reformer Stunden &
+              {hoverReformer ? (
+                <Highlighter
+                  action="underline"
+                  color="#8fac8f"
+                  animationDuration={600}
+                  iterations={2}
+                  strokeWidth={3}
+                >
+                  Reformer Stunden &
+                </Highlighter>
+              ) : (
+                "Reformer Stunden &"
+              )}
             </a>
             <div className="basis-full h-0" />
             <a
               href="#matten"
-              className="transition-all duration-1000 ease-out hover:text-primary"
+              className="transition-all duration-1000 ease-out"
               style={{
                 opacity: showMatten ? 1 : 0,
                 transform: showMatten ? "translateY(0)" : "translateY(-20px)",
                 filter: showMatten ? "blur(0px)" : "blur(12px)",
               }}
+              onMouseEnter={() => setHoverMatten(true)}
+              onMouseLeave={() => setHoverMatten(false)}
             >
-              Matten Kurse
+              {hoverMatten ? (
+                <Highlighter
+                  action="underline"
+                  color="#8fac8f"
+                  animationDuration={600}
+                  iterations={2}
+                  strokeWidth={3}
+                >
+                  Matten Kurse
+                </Highlighter>
+              ) : (
+                "Matten Kurse"
+              )}
             </a>
           </div>
         </div>

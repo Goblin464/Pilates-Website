@@ -222,6 +222,9 @@ export function Gallery() {
   const isDraggingRef = useRef(false)
   const dragStartXRef = useRef(0)
   const dragOffsetRef = useRef(0)
+  const velocityRef = useRef(0)
+  const lastMoveXRef = useRef(0)
+  const lastMoveTimeRef = useRef(0)
 
   const wrapOffset = useCallback(
     (val: number) => ((val % setWidth) + setWidth) % setWidth,
@@ -234,11 +237,16 @@ export function Gallery() {
     }
   }, [])
 
-  // Auto-scroll loop
   useEffect(() => {
     const animate = () => {
       if (!isDraggingRef.current) {
-        offsetRef.current = wrapOffset(offsetRef.current + AUTO_SPEED)
+        if (Math.abs(velocityRef.current) > 0.5) {
+          offsetRef.current = wrapOffset(offsetRef.current + velocityRef.current)
+          velocityRef.current *= 0.95
+        } else {
+          velocityRef.current = 0
+          offsetRef.current = wrapOffset(offsetRef.current + AUTO_SPEED)
+        }
         applyTransform()
       }
       rafRef.current = requestAnimationFrame(animate)
@@ -247,7 +255,6 @@ export function Gallery() {
     return () => cancelAnimationFrame(rafRef.current)
   }, [wrapOffset, applyTransform])
 
-  // Horizontal scroll only
   useEffect(() => {
     const container = trackRef.current?.parentElement
     if (!container) return
@@ -255,6 +262,7 @@ export function Gallery() {
     const handleWheel = (e: WheelEvent) => {
       if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return
       e.preventDefault()
+      velocityRef.current = 0
       offsetRef.current = wrapOffset(offsetRef.current + e.deltaX * SCROLL_MULTIPLIER)
       applyTransform()
     }
@@ -263,22 +271,76 @@ export function Gallery() {
     return () => container.removeEventListener("wheel", handleWheel)
   }, [wrapOffset, applyTransform])
 
-  // Pointer drag
+  useEffect(() => {
+    const container = trackRef.current?.parentElement
+    if (!container) return
+
+    const handleTouchStart = (e: TouchEvent) => {
+      isDraggingRef.current = true
+      velocityRef.current = 0
+      dragStartXRef.current = e.touches[0].clientX
+      lastMoveXRef.current = e.touches[0].clientX
+      lastMoveTimeRef.current = Date.now()
+      dragOffsetRef.current = offsetRef.current
+    }
+
+    const handleTouchMove = (e: TouchEvent) => {
+      if (!isDraggingRef.current) return
+      e.preventDefault()
+      const x = e.touches[0].clientX
+      const now = Date.now()
+      const dt = now - lastMoveTimeRef.current
+      if (dt > 0) {
+        velocityRef.current = (lastMoveXRef.current - x) / dt * 16
+      }
+      lastMoveXRef.current = x
+      lastMoveTimeRef.current = now
+      const dx = dragStartXRef.current - x
+      offsetRef.current = wrapOffset(dragOffsetRef.current + dx)
+      applyTransform()
+    }
+
+    const handleTouchEnd = () => {
+      isDraggingRef.current = false
+    }
+
+    container.addEventListener("touchstart", handleTouchStart, { passive: true })
+    container.addEventListener("touchmove", handleTouchMove, { passive: false })
+    container.addEventListener("touchend", handleTouchEnd, { passive: true })
+    return () => {
+      container.removeEventListener("touchstart", handleTouchStart)
+      container.removeEventListener("touchmove", handleTouchMove)
+      container.removeEventListener("touchend", handleTouchEnd)
+    }
+  }, [wrapOffset, applyTransform])
+
   const handlePointerDown = (e: React.PointerEvent) => {
+    if (e.pointerType === "touch") return
     isDraggingRef.current = true
+    velocityRef.current = 0
     dragStartXRef.current = e.clientX
+    lastMoveXRef.current = e.clientX
+    lastMoveTimeRef.current = Date.now()
     dragOffsetRef.current = offsetRef.current
     ;(e.target as HTMLElement).setPointerCapture(e.pointerId)
   }
 
   const handlePointerMove = (e: React.PointerEvent) => {
-    if (!isDraggingRef.current) return
+    if (!isDraggingRef.current || e.pointerType === "touch") return
+    const now = Date.now()
+    const dt = now - lastMoveTimeRef.current
+    if (dt > 0) {
+      velocityRef.current = (lastMoveXRef.current - e.clientX) / dt * 16
+    }
+    lastMoveXRef.current = e.clientX
+    lastMoveTimeRef.current = now
     const dx = dragStartXRef.current - e.clientX
     offsetRef.current = wrapOffset(dragOffsetRef.current + dx)
     applyTransform()
   }
 
-  const handlePointerUp = () => {
+  const handlePointerUp = (e: React.PointerEvent) => {
+    if (e.pointerType === "touch") return
     isDraggingRef.current = false
   }
 
@@ -292,7 +354,7 @@ export function Gallery() {
         className={`overflow-hidden transition-all duration-700 select-none ${
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
         }`}
-        style={{ transitionDelay: isVisible ? "200ms" : "0ms", cursor: "grab" }}
+        style={{ transitionDelay: isVisible ? "200ms" : "0ms", cursor: "grab", touchAction: "pan-y" }}
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
         onPointerUp={handlePointerUp}
