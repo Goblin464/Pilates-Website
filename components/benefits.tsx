@@ -1,38 +1,38 @@
 "use client"
 
-import { Activity, Smile, StretchVertical as Stretching, Brain, Heart, Dumbbell } from "lucide-react"
+import { ChevronsDown, Smile, TrendingUp as Stretching, Brain, Heart, Dumbbell } from "lucide-react"
 import { useFadeIn } from "@/hooks/use-fade-in"
 
 const benefits = [
   {
-    icon: Activity,
-    title: "Ruckenprobleme lindern",
-    description: "Starkt die Tiefenmuskulatur und unterstutzt eine gesunde Wirbelsaule.",
+    icon: ChevronsDown,
+    title: "Rückenprobleme lindern",
+    description: "Stärkt die Tiefenmuskulatur und unterstützt eine gesunde Wirbelsaule.",
   },
   {
     icon: Smile,
     title: "Haltung verbessern",
-    description: "Korrigiert muskulare Dysbalancen und fordert eine aufrechte Korperhaltung.",
+    description: "Korrigiert muskulare Dysbalancen und fordert eine aufrechte Körperhaltung.",
   },
   {
     icon: Stretching,
     title: "Flexibilitat steigern",
-    description: "Sanfte Dehnungen erhohen die Beweglichkeit und beugen Verletzungen vor.",
+    description: "Sanfte Dehnungen erhöhen die Beweglichkeit und beugen Verletzungen vor.",
   },
   {
     icon: Brain,
     title: "Stress abbauen",
-    description: "Bewusste Atmung und fliessende Bewegungen beruhigen Korper und Geist.",
+    description: "Bewusste Atmung und fliessende Bewegungen beruhigen Körper und Geist.",
   },
   {
     icon: Heart,
-    title: "Korperbewusstsein fordern",
-    description: "Lernen Sie, Ihren Korper besser zu verstehen und achtsam zu bewegen.",
+    title: "Körperbewusstsein fördern",
+    description: "Den eigenen Körper besser verstehen und achtsam bewegen lernen.",
   },
   {
     icon: Dumbbell,
     title: "Kraft aufbauen",
-    description: "Ganzheitliches Training fur eine starke Korpermitte und mehr Core-Stabilitat.",
+    description: "Ganzheitliches Training für eine starke Körpermitte und mehr Core-Stabilität.",
   },
 ]
 

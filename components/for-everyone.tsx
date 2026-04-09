@@ -4,18 +4,17 @@ import Image from "next/image"
 import { useFadeIn } from "@/hooks/use-fade-in"
 import { img } from "@/lib/utils"
 
-const audiences = [
+const audiences: { image: string; title: string; description: string; objectPosition?: string }[] = [
   {
     image: "/oldMan.JPG",
     title: "Jedes Alter",
-    
     description: "Pilates passt sich Ihnen an, nicht umgekehrt.",
   },
   {
-    image: "/youngWoman.JPG",
+    image: "/everyFitnessLevel.JPG",
     title: "Jedes Fitnesslevel",
-    
-    description: "Wir holen Sie dort ab, wo Sie stehen.",
+    description: "Die Übungen werden individuell abgestimmt.",
+    objectPosition: "0% center",
   },
   {
     image: "/hands.JPG",
@@ -60,6 +59,7 @@ export function ForEveryone() {
                   alt={item.title}
                   fill
                   className="object-cover transition-all duration-700 group-hover:scale-105"
+                  style={{ objectPosition: item.objectPosition }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-foreground/40 via-foreground/10 to-transparent" />
                 

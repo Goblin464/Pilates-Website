@@ -15,14 +15,11 @@ export function Footer() {
             <span className="font-serif text-2xl font-bold text-card">P</span>
           </div>
           
-          <p className="font-serif text-3xl tracking-wide mb-2">PURE PILATES</p>
-          <p className="text-card/50 text-sm mb-8">
-            Korper & Geist in Einklang bringen
-          </p>
+          <p className="font-serif text-3xl tracking-wide mb-2">Karin Wagner-Zimmermann</p>
           
           {/* Social */}
           <a
-            href="#"
+            href="https://www.instagram.com/karinwagner.zimmermann/"
             className="w-12 h-12 rounded-full bg-card/10 flex items-center justify-center text-card/60 hover:text-card hover:bg-card/20 transition-all mb-12"
             aria-label="Instagram"
           >
@@ -31,8 +28,8 @@ export function Footer() {
           
           {/* Links */}
           <div className="flex flex-wrap justify-center gap-6 text-sm text-card/50 mb-8">
-            <a href="#" className="hover:text-card transition-colors">Impressum</a>
-            <a href="#" className="hover:text-card transition-colors">Datenschutz</a>
+            <a href="/impressum" className="hover:text-card transition-colors">Impressum</a>
+            <a href="/datenschutz" className="hover:text-card transition-colors">Datenschutz</a>
             <a href="#" className="hover:text-card transition-colors">AGB</a>
           </div>
           

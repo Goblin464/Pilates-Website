@@ -18,52 +18,25 @@ const TOTAL_HEIGHT = TRACK_HEIGHT + MAX_OFFSET
 type GalleryBlock = {
   width: number
   offsetY: number
-  items: { src: string; alt: string; height: number }[]
+  items: { src: string; alt: string; height: number; objectPosition?: string }[]
 }
 
 // Asymmetric block pattern with y offsets for an organic, editorial look
 const GP = "/GalleryPictures"
 
 const blocks: GalleryBlock[] = [
-  {
-    width: 360,
-    offsetY: 0,
-    items: [{ src: `${GP}/IMG_7914.JPG`, alt: "Pilates Studio", height: TRACK_HEIGHT }],
-  },
-  {
-    width: 330,
-    offsetY: 55,
-    items: [
-      { src: `${GP}/IMG_7942b.JPG`, alt: "Pilates Training", height: 290 },
-      { src: `${GP}/IMG_7965b.JPG`, alt: "Pilates Übung", height: TRACK_HEIGHT - 290 - INNER_GAP },
-    ],
-  },
-  {
-    width: 520,
-    offsetY: 15,
-    items: [{ src: `${GP}/IMG_7966.JPG`, alt: "Studio Atmosphäre", height: TRACK_HEIGHT - 30 }],
-  },
+  
+  
   {
     width: 310,
-    offsetY: 0,
+    offsetY: 100,
     items: [
-      { src: `${GP}/IMG_7989.JPG`, alt: "Reformer Detail", height: 210 },
+  
       { src: `${GP}/IMG_8010.JPG`, alt: "Pilates Pose", height: TRACK_HEIGHT - 210 - INNER_GAP },
     ],
   },
-  {
-    width: 440,
-    offsetY: 70,
-    items: [{ src: `${GP}/IMG_8074.JPG`, alt: "Training Session", height: TRACK_HEIGHT - 70 }],
-  },
-  {
-    width: 320,
-    offsetY: 25,
-    items: [
-      { src: `${GP}/_DSC0847.jpg`, alt: "Pilates Bewegung", height: (TRACK_HEIGHT - INNER_GAP) / 2 },
-      { src: `${GP}/_DSC0878.jpg`, alt: "Körperarbeit", height: (TRACK_HEIGHT - INNER_GAP) / 2 },
-    ],
-  },
+ 
+  
   {
     width: 540,
     offsetY: 0,
@@ -71,29 +44,25 @@ const blocks: GalleryBlock[] = [
   },
   {
     width: 340,
-    offsetY: 50,
+    offsetY: 150,
     items: [
-      { src: `${GP}/_DSC0919.jpg`, alt: "Pilates Kraft", height: 280 },
-      { src: `${GP}/_DSC0966-4.jpg`, alt: "Dehnung", height: TRACK_HEIGHT - 280 - INNER_GAP },
+      { src: `${GP}/_DSC0919.jpg`, alt: "Pilates Kraft", height: 280, objectPosition: "center 5%" },
+     
     ],
   },
-  {
-    width: 300,
-    offsetY: 20,
-    items: [{ src: `${GP}/_DSC0997.jpg`, alt: "Balance Training", height: TRACK_HEIGHT - 20 }],
-  },
+  
   {
     width: 350,
     offsetY: 0,
     items: [
-      { src: `${GP}/_DSC1024.jpg`, alt: "Pilates Flow", height: 220 },
+      { src: `${GP}/_DSC0966-4.jpg`, alt: "Dehnung", height: TRACK_HEIGHT - 280 - INNER_GAP },
       { src: `${GP}/_DSC1054.jpg`, alt: "Konzentration", height: TRACK_HEIGHT - 220 - INNER_GAP },
     ],
   },
   {
     width: 550,
     offsetY: 80,
-    items: [{ src: `${GP}/_DSC1067.jpg`, alt: "Reformer Training", height: TRACK_HEIGHT - 80 }],
+    items: [{ src: `${GP}/IMG_7966.JPG`, alt: "Studio Atmosphäre", height: TRACK_HEIGHT - 30 }],
   },
   {
     width: 310,
@@ -117,23 +86,20 @@ const blocks: GalleryBlock[] = [
     ],
   },
   {
+    width: 340,
+    offsetY: 150,
+    items: [
+      
+      { src: `${GP}/_DSC1701.jpg`, alt: "Matten Training", height: TRACK_HEIGHT - 285 - INNER_GAP },
+    ],
+  },
+  {
     width: 370,
     offsetY: 10,
     items: [{ src: `${GP}/_DSC1341.jpg`, alt: "Pilates Moment", height: TRACK_HEIGHT - 10 }],
   },
-  {
-    width: 300,
-    offsetY: 60,
-    items: [
-      { src: `${GP}/_DSC1575.jpg`, alt: "Training Detail", height: 195 },
-      { src: `${GP}/_DSC1585.jpg`, alt: "Pilates Ausdruck", height: TRACK_HEIGHT - 195 - INNER_GAP },
-    ],
-  },
-  {
-    width: 530,
-    offsetY: 0,
-    items: [{ src: `${GP}/_DSC1633.jpg`, alt: "Pilates Raum", height: TRACK_HEIGHT }],
-  },
+  
+  
   {
     width: 320,
     offsetY: 40,
@@ -142,29 +108,14 @@ const blocks: GalleryBlock[] = [
       { src: `${GP}/_DSC1661.jpg`, alt: "Gruppentraining", height: (TRACK_HEIGHT - INNER_GAP) / 2 },
     ],
   },
-  {
-    width: 460,
-    offsetY: 75,
-    items: [{ src: `${GP}/_DSC1684.jpg`, alt: "Pilates Fokus", height: TRACK_HEIGHT - 75 }],
-  },
-  {
-    width: 340,
-    offsetY: 0,
-    items: [
-      { src: `${GP}/_DSC1697.jpg`, alt: "Reformer Übung", height: 285 },
-      { src: `${GP}/_DSC1701.jpg`, alt: "Matten Training", height: TRACK_HEIGHT - 285 - INNER_GAP },
-    ],
-  },
+  
+  
   {
     width: 350,
     offsetY: 30,
     items: [{ src: `${GP}/_DSC1712.jpg`, alt: "Pilates Eleganz", height: TRACK_HEIGHT - 30 }],
   },
-  {
-    width: 500,
-    offsetY: 0,
-    items: [{ src: `${GP}/_DSC1728.jpg`, alt: "Studio Panorama", height: TRACK_HEIGHT }],
-  },
+ 
   {
     width: 380,
     offsetY: 65,
@@ -176,7 +127,17 @@ const setWidth = blocks.reduce((sum, b) => sum + b.width + BLOCK_GAP, 0)
 
 // ── Sub-components ────────────────────────────────────────────────────
 
-function GalleryImage({ src, alt, height }: { src: string; alt: string; height: number }) {
+function GalleryImage({
+  src,
+  alt,
+  height,
+  objectPosition,
+}: {
+  src: string
+  alt: string
+  height: number
+  objectPosition?: string
+}) {
   return (
     <div
       className="relative w-full rounded-2xl overflow-hidden group"
@@ -187,6 +148,7 @@ function GalleryImage({ src, alt, height }: { src: string; alt: string; height: 
         alt={alt}
         fill
         className="object-cover transition-transform duration-700 group-hover:scale-110 grayscale"
+        style={{ objectPosition }}
         sizes="560px"
         draggable={false}
       />

@@ -19,22 +19,22 @@ const principles = [
   {
     number: "03",
     title: "Kontrolle",
-    description: "Prazise, bewusste Bewegungen statt schneller, unkontrollierter Wiederholungen.",
+    description: "Präzise, bewusste Bewegungen statt schneller, unkontrollierter Wiederholungen.",
   },
   {
     number: "04",
     title: "Atmung",
-    description: "Die richtige Atemtechnik unterstutzt jede Bewegung und fordert die Entspannung.",
+    description: "Die Atmung unterstützt den Fluss der Bewegung.",
   },
   {
     number: "05",
-    title: "Prazision",
-    description: "Qualitat vor Quantitat – jede Ubung wird technisch exakt ausgeführt.",
+    title: "Präzision",
+    description: "Qualität vor Quantität – jede Übung wird technisch exakt ausgeführt.",
   },
   {
     number: "06",
     title: "Fluss",
-    description: "Fliessende, harmonische Ubergange zwischen den Ubungen fur ein ganzheitliches Training.",
+    description: "Fließende, harmonische Übergänge zwischen den Übungen fur ein ganzheitliches Training.",
   },
 ]
 
