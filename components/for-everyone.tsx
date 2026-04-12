@@ -25,7 +25,7 @@ const audiences: { image: string; title: string; description: string; objectPosi
 ]
 
 export function ForEveryone() {
-  const { ref, isVisible } = useFadeIn()
+  const { ref, isVisible } = useFadeIn(0.1)
 
   return (
     <section ref={ref} className="py-24 md:py-32 bg-secondary relative">

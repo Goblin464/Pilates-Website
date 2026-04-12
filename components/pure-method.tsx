@@ -104,7 +104,7 @@ function FlipCard({ principle, index, isVisible, isMobile }: { principle: typeof
 }
 
 export function PureMethod() {
-  const { ref, isVisible } = useFadeIn()
+  const { ref, isVisible } = useFadeIn(0.1)
   const isMobile = useIsMobile()
 
   return (
