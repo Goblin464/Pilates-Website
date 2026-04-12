@@ -33,7 +33,7 @@ export function Navigation() {
   }, [])
 
   const navItems = [
-    { label: "Uber mich", href: "#about" },
+    { label: "Über mich", href: "#about" },
     { label: "Angebot", href: "#courses" },
     { label: "Methode", href: "#method" },
     { label: "Kontakt", href: "#contact" },

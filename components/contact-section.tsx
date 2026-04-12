@@ -64,23 +64,23 @@ export function ContactSection() {
             isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"
           }`}>
             <div className="space-y-6">
-              <a href="tel:+491234567890" className="contact-card relative flex items-center gap-5 p-5 bg-card rounded-[1.5rem] border border-border overflow-hidden group hover:bg-foreground hover:border-foreground transition-all duration-500">
+              <a href="tel:+49 171 2111556" className="contact-card relative flex items-center gap-5 p-5 bg-card rounded-[1.5rem] border border-border overflow-hidden group hover:bg-foreground hover:border-foreground transition-all duration-500">
                 <div className="contact-icon relative flex-shrink-0 w-14 h-14 bg-foreground/5 rounded-2xl flex items-center justify-center group-hover:bg-card/20 [transform-style:preserve-3d] transition-colors duration-500">
                   <Phone className="w-6 h-6 text-foreground group-hover:text-card transition-colors duration-500" />
                 </div>
                 <div className="relative">
                   <p className="text-muted-foreground text-sm group-hover:text-card/60 transition-colors duration-500">Telefon</p>
-                  <p className="text-foreground font-medium group-hover:text-card transition-colors duration-500">+49 123 456 7890</p>
+                  <p className="text-foreground font-medium group-hover:text-card transition-colors duration-500">+49 171 2111556</p>
                 </div>
               </a>
 
-              <a href="mailto:info@pure-pilates.de" className="contact-card relative flex items-center gap-5 p-5 bg-card rounded-[1.5rem] border border-border overflow-hidden group hover:bg-foreground hover:border-foreground transition-all duration-500">
+              <a href="mailto:info@pk.wagner.zimmermann@gmail.com" className="contact-card relative flex items-center gap-5 p-5 bg-card rounded-[1.5rem] border border-border overflow-hidden group hover:bg-foreground hover:border-foreground transition-all duration-500">
                 <div className="contact-icon relative flex-shrink-0 w-14 h-14 bg-foreground/5 rounded-2xl flex items-center justify-center group-hover:bg-card/20 [transform-style:preserve-3d] transition-colors duration-500">
                   <Mail className="w-6 h-6 text-foreground group-hover:text-card transition-colors duration-500" />
                 </div>
                 <div className="relative">
                   <p className="text-muted-foreground text-sm group-hover:text-card/60 transition-colors duration-500">E-Mail</p>
-                  <p className="text-foreground font-medium group-hover:text-card transition-colors duration-500">wagner.zimmermann@gmx.de</p>
+                  <p className="text-foreground font-medium group-hover:text-card transition-colors duration-500">k.wagner.zimmermann@gmail.com</p>
                 </div>
               </a>
 

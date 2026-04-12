@@ -1,15 +1,17 @@
 "use client"
-
 import { useEffect, useRef, useState } from "react"
 
-export function useFadeIn(threshold = 0.1) {
+export function useFadeIn(threshold = 0.4) {
   const ref = useRef<HTMLDivElement>(null)
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsVisible(entry.isIntersecting)
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+          observer.disconnect() 
+        }
       },
       { threshold }
     )
@@ -20,9 +22,7 @@ export function useFadeIn(threshold = 0.1) {
     }
 
     return () => {
-      if (currentRef) {
-        observer.unobserve(currentRef)
-      }
+      observer.disconnect()
     }
   }, [threshold])
 

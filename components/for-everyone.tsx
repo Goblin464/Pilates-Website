@@ -11,7 +11,7 @@ const audiences: { image: string; title: string; description: string; objectPosi
     description: "Pilates passt sich Ihnen an, nicht umgekehrt.",
   },
   {
-    image: "/everyFitnessLevel.JPG",
+    image: "/everyFitnessLevel.jpg",
     title: "Jedes Fitnesslevel",
     description: "Die Übungen werden individuell abgestimmt.",
     objectPosition: "0% center",
@@ -58,6 +58,7 @@ export function ForEveryone() {
                   src={img(item.image)}
                   alt={item.title}
                   fill
+                  sizes="(min-width: 1024px) 33vw, 100vw"
                   className="object-cover transition-all duration-700 group-hover:scale-105"
                   style={{ objectPosition: item.objectPosition }}
                 />

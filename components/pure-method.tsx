@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react"
 import { useFadeIn } from "@/hooks/use-fade-in"
-import ScrollReveal from "@/components/ScrollReveal"
+import ScrollReveal from "@/components/ui/ScrollReveal"
 
 
 const principles = [
