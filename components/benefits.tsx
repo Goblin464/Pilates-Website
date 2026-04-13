@@ -40,7 +40,7 @@ export function Benefits() {
   const { ref, isVisible } = useFadeIn()
 
   return (
-    <section ref={ref} className="py-24 md:py-32 bg-background relative overflow-hidden">
+    <section id="benefits" ref={ref} className="py-24 md:py-32 bg-background relative overflow-hidden">
       {/* Decorative blob */}
       <div className="absolute -top-40 -right-40 w-80 h-80 rounded-full bg-foreground/5 blur-3xl" />
       <div className="absolute -bottom-40 -left-40 w-80 h-80 rounded-full bg-foreground/5 blur-3xl" />

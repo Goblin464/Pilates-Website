@@ -34,10 +34,12 @@ export function Navigation() {
   }, [])
 
   const navItems = [
-    { label: "Über mich", href: "#about" },
+    {label: "Warum Pilates?", href: "#benefits"},
     { label: "Angebot", href: "#courses" },
     { label: "Methode", href: "#method" },
+    { label: "Über mich", href: "#about" },
     { label: "Kontakt", href: "#contact" },
+
   ]
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {

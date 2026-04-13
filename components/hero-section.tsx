@@ -75,7 +75,7 @@ export function HeroSection() {
             )}
           </div>
 
-          <div className="font-serif text-3xl md:text-4xl lg:text-6xl text-card leading-[1.1] flex flex-wrap items-baseline gap-x-4 md:gap-x-6">
+          <div className=" cursor-pointer font-serif text-3xl md:text-4xl lg:text-6xl text-card leading-[1.1] flex flex-wrap items-baseline gap-x-4 md:gap-x-6">
             <a
               onClick={(e) => handleNavClick(e, "#reformer")}
               className="transition-all duration-1000 ease-out"
