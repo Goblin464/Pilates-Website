@@ -12,7 +12,7 @@ import { sendEmail } from "@/app/actions/send-email"
 import dynamic from "next/dynamic"
 
 const StudioMap = dynamic(
-  () => import("@/components/studio-map").then((mod) => mod.StudioMap),
+  () => import("@/components/ui/studio-map").then((mod) => mod.StudioMap),
   { ssr: false }
 )
 

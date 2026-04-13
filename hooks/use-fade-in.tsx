@@ -6,14 +6,17 @@ export function useFadeIn(threshold = 0.4) {
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
+    const isMobile = window.innerWidth < 768
+    const actualThreshold = isMobile ? 0.1 : threshold
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true)
-          observer.disconnect() 
+          observer.disconnect()
         }
       },
-      { threshold }
+      { threshold: actualThreshold }
     )
 
     const currentRef = ref.current
@@ -21,9 +24,7 @@ export function useFadeIn(threshold = 0.4) {
       observer.observe(currentRef)
     }
 
-    return () => {
-      observer.disconnect()
-    }
+    return () => observer.disconnect()
   }, [threshold])
 
   return { ref, isVisible }

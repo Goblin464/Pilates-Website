@@ -5,6 +5,7 @@ import { useEffect, useState } from "react"
 import { img } from "@/lib/utils"
 import { Highlighter } from "@/components/ui/highlighter"
 
+
 export function HeroSection() {
   const [isLoaded, setIsLoaded] = useState(false)
   const [showReformer, setShowReformer] = useState(false)
@@ -16,6 +17,14 @@ export function HeroSection() {
 
   const [showPilates, setShowPilates] = useState(false)
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault()
+    const element = document.querySelector(href)
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+   
+  }
   useEffect(() => {
     setIsLoaded(true)
     const t0 = setTimeout(() => setShowPilates(true), 500)
@@ -68,7 +77,7 @@ export function HeroSection() {
 
           <div className="font-serif text-3xl md:text-4xl lg:text-6xl text-card leading-[1.1] flex flex-wrap items-baseline gap-x-4 md:gap-x-6">
             <a
-              href="#reformer"
+              onClick={(e) => handleNavClick(e, "#reformer")}
               className="transition-all duration-1000 ease-out"
               style={{
                 opacity: showReformer ? 1 : 0,
@@ -94,7 +103,7 @@ export function HeroSection() {
             </a>
             <div className="basis-full h-0" />
             <a
-              href="#matten"
+              onClick={(e) => handleNavClick(e, "#matten")}
               className="transition-all duration-1000 ease-out"
               style={{
                 opacity: showMatten ? 1 : 0,
