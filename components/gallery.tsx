@@ -32,7 +32,7 @@ const blocks: GalleryBlock[] = [
     offsetY: 100,
     items: [
   
-      { src: `${GP}/IMG_8010.JPG`, alt: "Pilates Pose", height: TRACK_HEIGHT - 210 - INNER_GAP },
+      { src: `${GP}/IMG_8010.jpg`, alt: "Pilates Pose", height: TRACK_HEIGHT - 210 - INNER_GAP },
     ],
   },
  
@@ -62,7 +62,7 @@ const blocks: GalleryBlock[] = [
   {
     width: 550,
     offsetY: 80,
-    items: [{ src: `${GP}/IMG_7966.JPG`, alt: "Studio Atmosphäre", height: TRACK_HEIGHT - 30 }],
+    items: [{ src: `${GP}/IMG_7966.jpg`, alt: "Studio Atmosphäre", height: TRACK_HEIGHT - 30 }],
   },
   {
     width: 310,

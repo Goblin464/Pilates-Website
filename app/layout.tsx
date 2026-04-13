@@ -1,19 +1,16 @@
-import React from "react"
 import type { Metadata } from 'next'
 import { Slabo_27px } from 'next/font/google'
-import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
 const slabo = Slabo_27px({ 
   subsets: ["latin"],
   weight: ["400"],
   variable: '--font-slabo'
-});
+})
 
 export const metadata: Metadata = {
-  title: 'Pure Pilates | Studio für Körper & Geist',
-  description: 'Entdecke die transformierende Kraft von Pilates. Matten- und Reformer-Kurse für alle Altersgruppen und Fitnesslevel.',
-  generator: 'v0.app',
+  title: 'Pilates in Konstanz | Reformer & Mattenkurse – Pure Pilates',
+  description: 'Pilates in Konstanz: Reformer- und Mattenkurse für alle Level. Persönliches Training für Körper & Geist. Jetzt Termin vereinbaren.',
   icons: {
     icon: [
       {
@@ -35,14 +32,13 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode
-}>) {
+}) {
   return (
-    <html lang="en">
+    <html lang="de">
       <body className={`${slabo.variable} font-slabo antialiased`}>
         {children}
-        <Analytics />
       </body>
     </html>
   )

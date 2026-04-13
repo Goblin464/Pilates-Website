@@ -11,6 +11,7 @@ import { useFadeIn } from "@/hooks/use-fade-in"
 import { sendEmail } from "@/app/actions/send-email"
 import dynamic from "next/dynamic"
 
+
 const StudioMap = dynamic(
   () => import("@/components/ui/studio-map").then((mod) => mod.StudioMap),
   { ssr: false }
@@ -32,16 +33,38 @@ export function ContactSection() {
     e.preventDefault()
     setIsSubmitting(true)
     setError("")
-
-    const result = await sendEmail(formData)
-
-    setIsSubmitting(false)
-    if (result.success) {
-      setSubmitted(true)
-      setFormData({ name: "", email: "", phone: "", message: "" })
-    } else {
-      setError(result.error || "Ein Fehler ist aufgetreten.")
+  
+    // 🛡️ Basic Frontend Checks (UX only)
+    if (!formData.name || !formData.email || !formData.message) {
+      setError("Bitte alle Pflichtfelder ausfüllen.")
+      setIsSubmitting(false)
+      return
     }
+  
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(formData.email)) {
+      setError("Bitte gültige E-Mail eingeben.")
+      setIsSubmitting(false)
+      return
+    }
+  
+    try {
+      const result = await sendEmail({
+        ...formData,
+        website: "" // honeypot leer lassen
+      })
+  
+      if (result.success) {
+        setSubmitted(true)
+        setFormData({ name: "", email: "", phone: "", message: "" })
+      } else {
+        setError(result.error || "Fehler beim Senden.")
+      }
+    } catch {
+      setError("Server nicht erreichbar.")
+    }
+  
+    setIsSubmitting(false)
   }
 
   return (
