@@ -22,7 +22,7 @@ type GalleryBlock = {
 }
 
 // Asymmetric block pattern with y offsets for an organic, editorial look
-const GP = "/GalleryPictures"
+const GP = "/GalleryPicturesDownsized"
 
 const blocks: GalleryBlock[] = [
   
