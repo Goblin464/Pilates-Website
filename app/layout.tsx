@@ -9,8 +9,8 @@ const slabo = Slabo_27px({
 })
 
 export const metadata: Metadata = {
-  title: 'Pilates in Konstanz | Reformer & Mattenkurse – Pure Pilates',
-  description: 'Pilates in Konstanz: Reformer- und Mattenkurse für alle Level. Persönliches Training für Körper & Geist. Jetzt Termin vereinbaren.',
+  title: 'Pilates in Konstanz | Reformer & Mattenkurse – Karin Wagner-Zimmermann',
+  description: 'Pilates in Konstanz: Reformer- und Mattenkurse für alle Level. Personal Training für Körper & Geist. Jetzt Termin vereinbaren.',
   icons: {
     icon: [
       {

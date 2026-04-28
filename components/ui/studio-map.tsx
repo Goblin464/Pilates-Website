@@ -25,7 +25,10 @@ export function StudioMap({ className }: { className?: string }) {
       const data = await res.json()
 
       if (cancelled || !data.length) return
-
+      if (!data?.length) {
+        setLoading(false)
+        return
+      }
       const lat = parseFloat(data[0].lat)
       const lon = parseFloat(data[0].lon)
 
@@ -36,7 +39,7 @@ export function StudioMap({ className }: { className?: string }) {
         attributionControl: false,
         scrollWheelZoom: false,
       })
-
+      
       L.tileLayer(
         "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
         { maxZoom: 19 }
