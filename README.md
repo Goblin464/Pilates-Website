@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🧘 Pilates Website
 
-## Getting Started
+A modern and minimal Pilates website built with React and Tailwind CSS.
 
-First, run the development server:
+##  About the Project
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+This project is a clean and responsive website designed for a Pilates studio / instructor.  
+The goal of the website is to provide visitors with simple and accessible information about:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- the Pilates instructor,
+- the benefits of Pilates,
+- and the positive effects Pilates can have on body and mind.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The design focuses on clarity, calm aesthetics, and an easy user experience.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+##  Technologies Used
 
-To learn more about Next.js, take a look at the following resources:
+- React
+- Tailwind CSS
+- TypeScript
+- HTML
+- CSS
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+##  Design Approach
 
-## Deploy on Vercel
+The visual design follows a minimal and elegant style with a focus on:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- readability,
+- soft aesthetics,
+- intuitive navigation,
+- and a calm overall user experience.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The website was intentionally designed as a single page layout so users can access all important information through short and simple scrolling without navigating between multiple pages.
+
+A green color palette was chosen to create a calm and natural atmosphere, while the black and white elements support a clean and minimalistic appearance without overwhelming the user.
+
+---
+
