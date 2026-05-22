@@ -4,14 +4,15 @@ A modern and minimal Pilates website built with React and Tailwind CSS.
 
 ##  About the Project
 
-This project is a clean and responsive website designed for a Pilates studio / instructor.  
+This project is a clean and responsive website designed for Pilates offers and the instructor.  
 The goal of the website is to provide visitors with simple and accessible information about:
 
 - the Pilates instructor,
 - the benefits of Pilates,
 - and the positive effects Pilates can have on body and mind.
+- the courses
 
-The design focuses on clarity, calm aesthetics, and an easy user experience.
+
 
 ---
 
